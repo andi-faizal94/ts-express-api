@@ -1,14 +1,16 @@
-import * as express from "express";
+import express from "express";
 import { Request, Response } from "express";
 
 // create and setup express app
 const app = express();
+const PORT = 8000;
 app.use(express.json());
 
 // register routes
 
 app.get("/users", function (req: Request, res: Response) {
   // here we will have logic to return all users
+  res.send("hallo");
 });
 
 app.get("/users/:id", function (req: Request, res: Response) {
@@ -30,4 +32,6 @@ app.delete("/users/:id", function (req: Request, res: Response) {
 });
 
 // start express server
-console.log(app.listen(3000));
+app.listen(PORT, () => {
+  console.log(`Server is running at https://localhost:${PORT}`);
+});
